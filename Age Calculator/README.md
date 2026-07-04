@@ -9,11 +9,12 @@ A beginner Python project that calculates your age in **years** based on your bi
 - Calculates age in years
 - Handles invalid input and prevents negative ages
 ## Example 
-
+```text
 Enter your birth year: 2000
 Birth Year    : 2000
 Current Year  : 2026
 Your age is   : 26
+```
 
 ## Age Calculator V2 
 
@@ -26,7 +27,7 @@ Your age is   : 26
 - Clean and user -friendly console output
 
 ## Output 
-
+```text
 ===================================
          AGE CALCULATOR
 ===================================
@@ -46,3 +47,4 @@ Do you want to calculate another age? (yes/y or no/n): n
 
 Thank you for using the Age Calculator!
 Have a great day!
+```
