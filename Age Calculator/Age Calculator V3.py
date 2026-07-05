@@ -10,36 +10,36 @@ def Age_calculator():
 
             # Input date of birth
             dob = input("Enter your DOB (DD-MM-YYYY): ")
-            birth_date = datetime.strptime(dob, "%d-%m-%Y").date()
-            current_date = datetime.now().date()
+            birth_datetime = datetime.strptime(dob, "%d-%m-%Y")
+            current_datetime = datetime.now()
 
             # Difference in days
-            difference = current_date - birth_date
+            difference = current_datetime - birth_datetime
             total_days = difference.days
+            total_seconds = difference.total_seconds()
             total_weeks = total_days // 7
-            total_hours = total_days * 24
-            total_minutes= total_hours * 60
-            
+            total_hours = int(total_seconds // 3600)
+            total_minutes = int(total_seconds // 60)
+
             # Calculate age using relativedelta
-            age = relativedelta(current_date,birth_date)
-            years = age.years
-            total_months = (years *12) + age.months
+            age = relativedelta(current_datetime,birth_datetime)
+            total_months = (age.years *12) + age.months
    
             # Birthday check  
-            if current_date.month == birth_date.month and current_date.day == birth_date.day:
+            if current_datetime.month == birth_datetime.month and current_datetime.day == birth_datetime.day:
                  print("🎉Happy Birthday!🎂") 
 
             # Next birthday calculation
-            next_birthday = birth_date.replace(year = current_date.year)
-            if current_date > next_birthday:
-                 next_birthday = birth_date.replace(year = current_date.year + 1)
-            days_left = (next_birthday - current_date).days
+            next_birthday = birth_datetime.replace(year = current_datetime.year)
+            if current_datetime > next_birthday:
+                 next_birthday = birth_datetime.replace(year = current_datetime.year + 1)
+            days_left = (next_birthday - current_datetime).days
 
             # Day of week of birth
-            day_of_week = birth_date.strftime("%A")
+            day_of_week = birth_datetime.strftime("%A")
 
             # Leap year check
-            is_leap = calendar.isleap(birth_date.year)
+            is_leap = calendar.isleap(birth_datetime.year)
 
             # Age Category determination
             if age.years < 13:
@@ -53,16 +53,18 @@ def Age_calculator():
 
             # Future age calculation    
             future_year_input = input("Enter future year (press Enter to skip): ")
+            future_age_text = ""   
             if future_year_input:
                 future_year = int(future_year_input)
-                future_age = future_year - birth_date.year
+                future_age = future_year - birth_datetime.year
+                future_age_text = f"Age in {future_year} : {future_age} years"
 
             # Output sections
             print()
             print("Personal Information")
             print("-" *35)
-            print(f"Date of Birth : {birth_date.strftime('%d-%m-%Y')}")
-            print(f"Current Date  : {current_date.strftime('%d-%m-%Y')}")
+            print(f"Date of Birth : {birth_datetime.strftime('%d-%m-%Y')}")
+            print(f"Current Date  : {current_datetime.strftime('%d-%m-%Y')}")
             print(f"Day of Birth  : {day_of_week}")
             print()
 
@@ -87,10 +89,10 @@ def Age_calculator():
             print("-" *35)
             print(f"Leap Year     : {'Yes' if is_leap else 'No'}")
             print(f"Age Category  : {category}")
-            print(f"Age in {future_year} : {future_age} years")
+            if future_age_text:
+                print(future_age_text)
             print()
-
-
+                
             print("=" *35)
             print("Thank you for using  Age Calculator!")
             print("=" *35)
