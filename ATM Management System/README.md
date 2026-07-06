@@ -118,3 +118,9 @@ Transaction History:
 Enter your choice: 5
 Thank you for using our ATM.
 ```
+## Why This Project?
+- Great for Python beginners to practice loops, conditionals, functions, and error handling.
+
+- Demonstrates real‑world logic like PIN verification and transaction tracking.
+
+- Can be extended with features like multiple accounts, interest calculation, or file storage.
